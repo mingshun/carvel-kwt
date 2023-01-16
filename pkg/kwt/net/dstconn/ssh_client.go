@@ -106,9 +106,9 @@ func (c *SSHClient) NewListener() (net.Listener, error) {
 
 func (c *SSHClient) detectConnBrokenErr(err error) error {
 	isEOF := err == io.EOF
-	_, isUnexpected := err.(gossh.UnexpectedPackerErr)
+	//_, isUnexpected := err.(gossh.UnexpectedPackerErr)
 
-	if isEOF || isUnexpected {
+	if isEOF {//|| isUnexpected {
 		return ConnectionBrokenErr{err}
 	}
 
